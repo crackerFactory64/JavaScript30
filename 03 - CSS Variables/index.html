@@ -80,15 +80,14 @@
       const blurInput = document.getElementById("blur");
       const baseInput = document.getElementById("base");
 
+      const handleChange = () => {
+        document.body.style.setProperty("--spacing", `${spacingInput.value}px`);
+        document.body.style.setProperty("--blur", `${blurInput.value}px`);
+        document.body.style.setProperty("--base", baseInput.value);
+      };
+
       document.querySelectorAll("input").forEach((input) => {
-        input.addEventListener("change", () => {
-          document.body.style.setProperty(
-            "--spacing",
-            `${spacingInput.value}px`
-          );
-          document.body.style.setProperty("--blur", `${blurInput.value}px`);
-          document.body.style.setProperty("--base", baseInput.value);
-        });
+        input.addEventListener("change", handleChange);
       });
     </script>
   </body>
