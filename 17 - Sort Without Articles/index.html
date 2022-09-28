@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sort Without Articles</title>
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      #bands {
+        list-style: inside square;
+        font-size: 20px;
+        background: white;
+        width: 500px;
+        margin: auto;
+        padding: 0;
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+      }
+
+      #bands li {
+        border-bottom: 1px solid #efefef;
+        padding: 20px;
+      }
+
+      #bands li:last-child {
+        border-bottom: 0;
+      }
+
+      a {
+        color: #ffc600;
+        text-decoration: none;
+      }
+    </style>
+
+    <ul id="bands"></ul>
+
+    <script>
+      const list = document.getElementById("bands");
+      const bands = [
+        "The Plot in You",
+        "The Devil Wears Prada",
+        "Pierce the Veil",
+        "Norma Jean",
+        "The Bled",
+        "Say Anything",
+        "The Midway State",
+        "We Came as Romans",
+        "Counterparts",
+        "Oh, Sleeper",
+        "A Skylit Drive",
+        "Anywhere But Here",
+        "An Old Dog",
+      ];
+
+      /*    INITIAL ATTEMPT
+      
+      const articles = ["a", "A", "an", "An", "the", "The"];
+      
+      //creates new array of band names with articles moved to end of string
+      
+      const mappedBands = bands.map((band) => {
+        const words = band.split(" ");
+
+        if (articles.includes(words[0])) {
+          words.push(words.splice(0, 1));
+        }
+
+        return words.join(" ");
+      });
+
+      //sorts that new array and then puts the article back to the start of the string
+      
+      const sortedBands = mappedBands.sort().map((band) => {
+        const words = band.split(" ");
+
+        if (articles.includes(words[words.length - 1])) {
+          words.unshift(words.splice(words.length - 1, 1));
+        }
+
+        return words.join(" ");
+      });
+      
+      */
+
+      function removeArticles(bandName) {
+        return bandName.replace(/^(a |the |an )/i, "").trim();
+      }
+
+      sortedBands = bands.sort((a, b) =>
+        removeArticles(a) > removeArticles(b) ? 1 : -1
+      );
+
+      sortedBands.forEach((band) => {
+        const listItem = document.createElement("li");
+        listItem.innerText = band;
+        list.append(listItem);
+      });
+    </script>
+  </body>
+</html>
