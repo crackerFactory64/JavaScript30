@@ -58,7 +58,7 @@
         highlightEl.style.top =
           currentLink.getBoundingClientRect().top + window.scrollY + "px";
         highlightEl.style.left =
-          currentLink.getBoundingClientRect().left + "px";
+          currentLink.getBoundingClientRect().left + window.scrollX + "px";
       }
 
       links.forEach((link) =>
