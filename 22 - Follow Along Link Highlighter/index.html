@@ -45,6 +45,24 @@
       </p>
     </div>
 
-    <script></script>
+    <span class="highlight"></span>
+    <script>
+      const links = [...document.querySelectorAll("a")];
+      const highlightEl = document.querySelector(".highlight");
+
+      function moveHighlight(e) {
+        const currentLink = e.target;
+
+        highlightEl.style.width = currentLink.offsetWidth + "px";
+        highlightEl.style.height = currentLink.offsetHeight + "px";
+        highlightEl.style.top = currentLink.getBoundingClientRect().top + "px";
+        highlightEl.style.left =
+          currentLink.getBoundingClientRect().left + "px";
+      }
+
+      links.forEach((link) =>
+        link.addEventListener("mouseenter", (e) => moveHighlight(e))
+      );
+    </script>
   </body>
 </html>
