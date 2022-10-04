@@ -276,12 +276,11 @@
 
       function handleScroll(e) {
         const scrollPosition = this.scrollY;
+
         if (scrollPosition >= 500) {
           body.classList.add("fixed-nav");
           body.style.paddingTop = `${nav.offsetHeight}px`;
-        }
-
-        if (scrollPosition < 500) {
+        } else {
           body.classList.remove("fixed-nav");
           body.style.paddingTop = `0px`;
         }
