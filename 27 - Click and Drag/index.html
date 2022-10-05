@@ -34,6 +34,43 @@
       <div class="item item25">25</div>
     </div>
 
-    <script></script>
+    <script>
+      const items = document.querySelector(".items");
+
+      let mousedown = false;
+      let initialMousePos;
+
+      function handleClick(e) {
+        if (e.target === items || e.target.parentElement === items) {
+          mousedown = true;
+          initialMousePos = e.screenX;
+          items.classList.add("active");
+        }
+      }
+
+      function scroll(e) {
+        if (mousedown) {
+          const mousePos = e.screenX;
+          mousePos > initialMousePos
+            ? (items.scrollLeft -= 50)
+            : (items.scrollLeft += 50);
+          initialMousePos = e.screenX;
+        }
+      }
+
+      items.addEventListener("mousedown", (e) => handleClick(e));
+
+      items.addEventListener("mousemove", (e) => scroll(e));
+
+      items.addEventListener("mouseup", () => {
+        mousedown = false;
+        items.classList.remove("active");
+      });
+
+      items.addEventListener("mouseleave", () => {
+        mousedown = false;
+        items.classList.remove("active");
+      });
+    </script>
   </body>
 </html>
