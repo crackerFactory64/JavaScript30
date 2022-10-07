@@ -34,15 +34,18 @@ function updateTimer() {
     secondsRemaining = `0${secondsRemaining}`;
   }
 
+  display.querySelector(
+    "h1"
+  ).innerText = `${minutesRemaing}:${secondsRemaining}`;
+
   if (difference < 0) {
     minutesRemaing = "00";
     secondsRemaining = "00";
     timerSet = false;
+    display.querySelector("h1").innerText = "Time's up!";
+    display.querySelector("p").innerText = "";
   }
 
-  display.querySelector(
-    "h1"
-  ).innerText = `${minutesRemaing}:${secondsRemaining}`;
   document.title = `${minutesRemaing}:${secondsRemaining}`;
 }
 
